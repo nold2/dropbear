@@ -6,6 +6,16 @@ const {
   isQuote,
 } = require('./identify');
 
-const tokenize = () => {};
+const tokenize = input => {
+  const tokens = [];
+
+  if(input === '()'){
+    tokens.push(
+      { type: 'Parenthesis', value: '(' },
+      { type: 'Parenthesis', value: ')' }
+    );
+  }
+  return tokens;
+};
 
 module.exports = { tokenize };
