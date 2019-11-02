@@ -14,11 +14,34 @@ const tokenize = input => {
     const character = input[cursor];
     if(isParenthesis(character)){
       tokens.push({
-          "type": "Parenthesis",
+          type: "Parenthesis",
           value: character
         });
+      cursor++;
+      continue;
     }
-    cursor++;
+
+    if(isWhitespace(character)){
+      cursor++;
+      continue;
+    }
+
+    if(isNumber(character)){
+      tokens.push({
+        type: "Number",
+        value: Number(character)
+      });
+      cursor++;
+      continue;
+    }
+
+    if(isLetter(character)){
+      tokens.push({
+        type: "Name",
+        value: character
+      })
+      cursor++;
+    }
   }
 
   return tokens;
