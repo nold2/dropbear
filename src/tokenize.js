@@ -8,13 +8,19 @@ const {
 
 const tokenize = input => {
   const tokens = [];
+  let cursor = 0;
 
-  if(input === '()'){
-    tokens.push(
-      { type: 'Parenthesis', value: '(' },
-      { type: 'Parenthesis', value: ')' }
-    );
+  while(cursor <  input.length){
+    const character = input[cursor];
+    if(isParenthesis(character)){
+      tokens.push({
+          "type": "Parenthesis",
+          value: character
+        });
+    }
+    cursor++;
   }
+
   return tokens;
 };
 
